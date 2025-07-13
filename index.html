@@ -77,10 +77,12 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 90vh; /* Full screen height */
+            height: 75vh; /* Full screen height */
             background-color: #ffffff;
             text-align: center;
             padding: 0 1em;
+            transition: top 0.6s ease-in-out;
+            opacity: 1;
         }
 
         .About-header {
@@ -121,13 +123,15 @@
 </header>
 
 <!-- About me Section-->
-<section class="About-me">
-    <h1 class="About-header" style="color: black;">Hi, I'm Kaiti! A CS Graduate based in Vancouver.</h1>
-    <p class="About-subheader">
-        I'm passionate about building web applications, learning new technologies, and solving real-world problems through code.
-        I’m currently seeking entry-level roles in software development.</p>
+<div id="About-me">
+    <section class="About-me">
+        <h1 class="About-header" style="color: black;">Hi, I'm Kaiti! A CS Graduate based in Vancouver.</h1>
+        <p class="About-subheader">
+            I'm passionate about building web applications, learning new technologies, and solving real-world problems through code.
+            I’m currently seeking entry-level roles in software development.</p>
 
-</section>
+    </section>
+</div>
 
 <div class=container>
 
@@ -166,7 +170,7 @@
     <!-- Youtube LINK https://youtu.be/dro1hyb1l98-->
     <!-- TODO_APP -->
     <div class="section-dark p-4 mb-4" style="background-color: #002145; border-radius: 15px;" >
-        <h2 style="color: #002145;">TODO APP</h2>
+        <h2 style="color: white;">TODO APP</h2>
 
         <div class="card mb-4">
             <!-- live video example -->
@@ -202,7 +206,7 @@
 
     <!-- FOOD APP -->
     <div class="section-dark p-4 mb-4" style="background-color: #002145; border-radius: 15px;" >
-        <h2 style="color: #002145;">Food Delivery App | Query Search </h2>
+        <h2 style="color: white;">Food Delivery App | Query & Database </h2>
 
         <div class="card mb-4">
             <!-- live video example -->
@@ -285,6 +289,31 @@
         </div>
     </div>
 </footer>
+
+
+<!-- Script for scrolling/ fading the top About me section -->
+<script>
+    window.addEventListener('scroll', function() {
+        const section = document.querySelector(".About-me");
+        const scroll_y = window.scrollY;
+
+        // Fade beings
+        const start_fade = 0;
+        // Where it's fully invisible and fades away at 700px
+        const end_fade = 700;
+        // opacity
+        let opac = 1;
+
+        if (scroll_y<= start_fade) {
+            opac = 1;
+        } else if (scroll_y >= end_fade) {
+            opac = 0;
+        } else {
+            opac = 1 - ((scroll_y- start_fade) / (end_fade - start_fade));
+        }
+        section.style.opacity = opac;
+    });
+</script>
 
 </body>
 </html>
